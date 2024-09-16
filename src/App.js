@@ -1,12 +1,14 @@
 import React from 'react';
 import NavbarComponent from './components/navbar';
-import ContentCardComponent from './components/contentCard';
+import LastMatches from './components/lastMatches';
+import TimaoStats from './components/corinthiansStats';
 
 function App() {
   return (
     <div className='w-full h-full'>
       <NavbarComponent/>
-      <ContentCardComponent/>
+      <TimaoStats/>
+      <LastMatches/>
     </div>
   );
 }
