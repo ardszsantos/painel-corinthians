@@ -32,14 +32,12 @@ const TimaoStats = () => {
   }
 
   return (
-    <div className="flex justify-center p-5 m-12 rounded-md bg-gray-500">
+    <div className="flex justify-center p-5 m-12 rounded-md bg-navBack-500">
       <div className="text-center text-white">
         <img src={team.logo} alt={`${team.name} logo`} className="w-24 h-24 mx-auto mb-4" />
         <h2 className="text-3xl font-bold">{team.name}</h2>
         <p className="text-lg mt-2">Fundado em: {team.founded}</p>
         <p className="text-lg mt-2">País: {team.country}</p>
-        <p className="text-lg mt-2">Estádio: {team?.venue?.name || 'Informação indisponível'}</p>
-
       </div>
     </div>
   );

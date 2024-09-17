@@ -1,6 +1,6 @@
 import React from 'react';
 import NavbarComponent from './components/navbar';
-import LastMatches from './components/lastMatches';
+import FirstSection from './components/sectionOne';
 import TimaoStats from './components/corinthiansStats';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className='w-full h-full'>
       <NavbarComponent/>
       <TimaoStats/>
-      <LastMatches/>
+      <FirstSection/>
     </div>
   );
 }
