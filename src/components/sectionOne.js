@@ -41,7 +41,6 @@ const FirstSection = () => {
 
     const fetchPlayers = async () => {
       try {
-        // Replace this URL with the correct endpoint for fetching players
         const response = await fetch('https://v3.football.api-sports.io/players?team=131&season=2022', {
           method: 'GET',
           headers: {
@@ -50,16 +49,22 @@ const FirstSection = () => {
         });
 
         const data = await response.json();
+        console.log("Full API Response:", data); // Log the entire API response
 
-        console.log('responsta: ', data)
-        setPlayers(data.response); // Assuming the players data is in response
+        if (data && data.response) {
+          setPlayers(data.response); // Assuming players data is in `response`
+          console.log("Players Data:", data.response); // Log the specific players data
+        } else {
+          console.warn("API response does not contain 'response' field:", data);
+        }
       } catch (error) {
         console.error('Erro ao buscar os jogadores:', error);
       }
     };
 
+    fetchPlayers();
     fetchGames();
-    fetchPlayers(); // Fetch players as well
+
   }, []);
 
   // Handle opening the game popup
@@ -158,22 +163,19 @@ const FirstSection = () => {
               <TableRow>
                 <TableCell align="left">Nome</TableCell>
                 <TableCell align="left">Posição</TableCell>
-                <TableCell align="left">Time</TableCell>
+                <TableCell align="left">Idade</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {players.map((player) => (
-                <TableRow
-                  key={player.id}
-                  onClick={() => handlePlayerClickOpen(player)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <TableCell align="left">{player.name}</TableCell>
-                  <TableCell align="left">{player.position}</TableCell>
-                  <TableCell align="left">{player.team.name}</TableCell>
+              {players.map((player, item) => (
+                <TableRow key={player?.id || Math.random()} onClick={() => handlePlayerClickOpen(player)} style={{ cursor: 'pointer' }}>
+                  <TableCell align="left">{item?.player?.name || 'N/A'}</TableCell>
+                  <TableCell align="left">{player?.position || 'N/A'}</TableCell>
+                  <TableCell align="left">{player?.age || 'N/A'}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
+
           </Table>
         </TableContainer>
 
