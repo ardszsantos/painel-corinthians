@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import NewCard from './newCard'; // Import the NewCard component
 
-const NEWSAPI_KEY = 'e571451976e14d369ee53f771ad58bca';
-const endpoint = 'https://newsapi.org/v2/everything';
-
 interface Article {
     title: string;
     author: string;
@@ -31,11 +28,10 @@ export default function NewsLoader() {
                 language: 'pt',
                 from: fromDate,
                 sortBy: 'publishedAt',
-                apiKey: NEWSAPI_KEY,
             };
 
             axios
-                .get(endpoint, { params })
+                .get('/api/news', { params })
                 .then((response) => {
                     const articles: Article[] = response.data.articles;
                     if (articles && articles.length > 0) {
