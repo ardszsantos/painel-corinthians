@@ -11,7 +11,7 @@ interface CardProps {
 
 const NewCard: React.FC<CardProps> = ({ img, title, author, date, content, url }) => {
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg  hover:scale-110 transition-all">
+        <div className="max-w-sm rounded overflow-hidden shadow-lg  hover:scale-105 md:hover:scale-110 transition-all">
             <a href={url} target='_blank' rel='noreferrer'>
                 <img className="w-full h-[200px] " src={img} alt={title} />
                 <div className="px-6 py-4">
