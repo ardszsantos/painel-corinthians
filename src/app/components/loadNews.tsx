@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import NewCard from './newCard'; // Import the NewCard component
+import NewCard from './newCard';
 
 interface Article {
     title: string;
     author: string;
+    url: string;
     source: {
         name: string;
     };
@@ -58,7 +59,7 @@ export default function NewsLoader() {
     return (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {news.map((article, index) => {
-                // Check if all required properties are present
+                
                 if (!article.title || !article.author || !article.urlToImage || !article.publishedAt || !article.content) {
                     return null;
                 }
@@ -71,6 +72,7 @@ export default function NewsLoader() {
                         author={article.author}
                         date={new Date(article.publishedAt).toLocaleDateString()}
                         content={article.content}
+                        url={article.url}
                     />
                 );
             })}
