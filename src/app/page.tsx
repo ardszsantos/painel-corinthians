@@ -7,7 +7,7 @@ export default function Home() {
       <div className="relative flex justify-center group">
         <Image
           src="/timãoLogo.png"
-          alt="Next.js logo"
+          alt="logo do corinthians"
           width={280}
           height={280}
           priority
